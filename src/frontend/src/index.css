@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Forest Wellness Palette */
+    --background: 0.97 0.008 100;
+    --foreground: 0.18 0.045 155;
+
+    --card: 0.99 0.004 100;
+    --card-foreground: 0.18 0.045 155;
+
+    --popover: 0.99 0.004 100;
+    --popover-foreground: 0.18 0.045 155;
+
+    --primary: 0.44 0.13 158;
+    --primary-foreground: 0.97 0.008 100;
+
+    --secondary: 0.9 0.04 152;
+    --secondary-foreground: 0.26 0.07 155;
+
+    --muted: 0.93 0.025 152;
+    --muted-foreground: 0.5 0.06 155;
+
+    --accent: 0.82 0.14 88;
+    --accent-foreground: 0.18 0.045 155;
+
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.97 0.008 100;
+
+    --border: 0.87 0.04 152;
+    --input: 0.87 0.04 152;
+    --ring: 0.44 0.13 158;
+
+    --radius: 0.75rem;
+
+    /* Chart colors — one per mood */
+    --chart-1: 0.6 0.14 192; /* teal — happy */
+    --chart-2: 0.52 0.13 262; /* indigo — sad */
+    --chart-3: 0.72 0.15 82; /* amber — neutral */
+    --chart-4: 0.54 0.2 25; /* red — angry */
+    --chart-5: 0.56 0.15 310; /* violet — stressed */
+
+    /* Sidebar */
+    --sidebar: 0.2 0.05 155;
+    --sidebar-foreground: 0.92 0.03 152;
+    --sidebar-primary: 0.6 0.14 158;
+    --sidebar-primary-foreground: 0.97 0.008 100;
+    --sidebar-accent: 0.28 0.07 155;
+    --sidebar-accent-foreground: 0.92 0.03 152;
+    --sidebar-border: 0.3 0.07 155;
+    --sidebar-ring: 0.6 0.14 158;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+/* Organic blob background shapes */
+.blob-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.blob-bg::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: oklch(0.44 0.13 158 / 0.07);
+  border-radius: 61% 39% 55% 45% / 48% 52% 48% 52%;
+  animation: blob-morph 18s ease-in-out infinite;
+}
+
+.blob-bg::after {
+  content: "";
+  position: absolute;
+  bottom: -15%;
+  left: -8%;
+  width: 50vw;
+  height: 50vw;
+  background: oklch(0.82 0.14 88 / 0.07);
+  border-radius: 42% 58% 65% 35% / 56% 44% 56% 44%;
+  animation: blob-morph 22s ease-in-out infinite reverse;
+}
+
+@keyframes blob-morph {
+  0%,
+  100% {
+    border-radius: 61% 39% 55% 45% / 48% 52% 48% 52%;
+  }
+  33% {
+    border-radius: 44% 56% 38% 62% / 60% 40% 60% 40%;
+  }
+  66% {
+    border-radius: 55% 45% 68% 32% / 38% 62% 38% 62%;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.44 0.13 158 / 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.44 0.13 158 / 0.5);
+}
